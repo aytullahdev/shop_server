@@ -22,13 +22,13 @@ con.connect(function (err) {
   // var sql = "CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))";
   //var sql ="CREATE TABLE customers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))";
   // var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
-  // var sql = `SELECT * FROM product where id=3`;
+  // var sql = `SELECT * FROM category`;
   // con.query(sql, function (err, result, fields) {
   //   if (err) {
   //     console.log("Error");
   //     return;
   //   }
-  //   console.log(result[0].title);
+  //   console.log(result);
   // });
 });
 

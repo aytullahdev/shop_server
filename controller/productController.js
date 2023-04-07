@@ -21,16 +21,79 @@ const getProductsByID = asyncHandler(async (req, res) => {
     res.json(result[0]);
   });
 });
-
-const addProduct = asyncHandler((req, res) => {
-  const { title, price, description, category_id } = req.body;
+const updateProduct = asyncHandler((req, res) => {
+  const {
+    id,
+    title,
+    price,
+    description,
+    category_id,
+    img,
+    stock,
+    img2,
+    img3,
+    note,
+    sku,
+  } = req.body;
   // img,size,description -> JSON,
   // || !img || !c_id || !price || !stock || !size
-  if (!title || !price || !category_id) {
+  if (!title || !price || !category_id || !id || !img || !stock) {
     res.status(500);
     throw new Error("Please Insert All Data");
   }
-  var sql = `INSERT INTO product (title,price,description,category_id) VALUES ('${title}','${price}','${description}','${category_id}');`;
+
+  var sql = `UPDATE product SET title='${title}',price='${price}',description='${description}',category_id='${category_id}', img='${img}', stock='${stock}', img2='${img2}', img3='${img3}', note='${note}',sku='${sku}' where id=${id};`;
+  con.query(sql, function (err, result) {
+    if (err) {
+      console.log(err);
+      res.status(500);
+      res.json({ message: err.sqlMessage });
+    }
+    res.json(result);
+  });
+});
+const deleteProduct = asyncHandler((req, res) => {
+  const { id } = req.body;
+  // img,size,description -> JSON,
+  // || !img || !c_id || !price || !stock || !size
+  if (!id) {
+    res.status(500);
+    throw new Error("Please Insert Valid ID");
+  }
+
+  var sql = `DELETE FROM product  WHERE id=${id};`;
+  con.query(sql, function (err, result) {
+    if (err) {
+      console.log(err);
+      res.status(500);
+      res.json({ message: err.sqlMessage });
+    }
+    res.json(result);
+  });
+});
+
+const addProduct = asyncHandler((req, res) => {
+  const {
+    title,
+    price,
+    description,
+    category_id,
+    img,
+    stock,
+    img2,
+    img3,
+    note,
+    sku,
+  } = req.body;
+
+  // img,size,description -> JSON,
+  // || !img || !c_id || !price || !stock || !size
+  if (!title || !price || !category_id || !img || !stock) {
+    res.status(500);
+    throw new Error("Please Insert All Data");
+  }
+  var sql = `INSERT INTO product (title,price,description,category_id,img,stock,img2,img3,note,sku) VALUES ('${title}','${price}','${description}','${category_id}','${img}','${stock}','${img2}','${img3}','${note}','${sku}');`;
+
   con.query(sql, function (err, result) {
     if (err) {
       console.log(err);
@@ -73,4 +136,6 @@ module.exports = {
   addCategory,
   addProduct,
   getProductsByID,
+  updateProduct,
+  deleteProduct,
 };
