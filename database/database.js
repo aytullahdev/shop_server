@@ -3,7 +3,7 @@ var con = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
   password: "password",
-  database: "mydb",
+  database: "shop",
 });
 // con.connect(function (err) {
 //     if (err) console.log(err);
@@ -22,14 +22,14 @@ con.connect(function (err) {
   // var sql = "CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))";
   //var sql ="CREATE TABLE customers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))";
   // var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
-  var sql = "SELECT * FROM customers";
-  con.query(sql, function (err, result, fields) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    console.log("Sucessfull");
-    console.log(result);
-  });
+  // var sql = `SELECT * FROM product where id=3`;
+  // con.query(sql, function (err, result, fields) {
+  //   if (err) {
+  //     console.log("Error");
+  //     return;
+  //   }
+  //   console.log(result[0].title);
+  // });
 });
+
 module.exports = { con };
