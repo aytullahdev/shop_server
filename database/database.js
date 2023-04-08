@@ -1,9 +1,15 @@
 const mysql = require("mysql");
+// var con = mysql.createConnection({
+//   host: "127.0.0.1",
+//   user: "root",
+//   password: "password",
+//   database: "shop",
+// });
 var con = mysql.createConnection({
-  host: "127.0.0.1",
-  user: "root",
-  password: "password",
-  database: "shop",
+  host: "sql.freedb.tech",
+  user: "freedb_aytdev",
+  password: "4QCaAqKxc%Ydv&K",
+  database: "freedb_myshop",
 });
 // con.connect(function (err) {
 //     if (err) console.log(err);

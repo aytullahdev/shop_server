@@ -12,6 +12,7 @@ const {
 
 router.get("/", getProducts);
 router.post("/addproduct/", addProduct);
+router.post("/addcategory", addCategory);
 router.get("/category/", getCategory);
 router.post("/addcategory/", addCategory);
 router.post("/update", updateProduct);
