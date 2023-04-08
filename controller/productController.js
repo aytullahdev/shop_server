@@ -127,7 +127,26 @@ const addCategory = asyncHandler((req, res) => {
       res.status(500);
       res.json({ message: err.sqlMessage });
     }
-    res.json(result);
+    res.json({ message: "Category is added", data: result });
+  });
+});
+const deletecategory = asyncHandler((req, res) => {
+  const { id } = req.body;
+  // img,size,description -> JSON,
+  // || !img || !c_id || !price || !stock || !size
+  if (!id) {
+    res.status(500);
+    throw new Error("Please Insert Valid ID");
+  }
+
+  var sql = `DELETE FROM category  WHERE id=${id};`;
+  con.query(sql, function (err, result) {
+    if (err) {
+      console.log(err);
+      res.status(500);
+      res.json({ message: err.sqlMessage });
+    }
+    res.json({ message: "Category is Deleted", data: result });
   });
 });
 module.exports = {
@@ -138,4 +157,5 @@ module.exports = {
   getProductsByID,
   updateProduct,
   deleteProduct,
+  deletecategory,
 };

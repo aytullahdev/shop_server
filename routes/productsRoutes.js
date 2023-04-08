@@ -8,6 +8,7 @@ const {
   getProductsByID,
   updateProduct,
   deleteProduct,
+  deletecategory,
 } = require("../controller/productController");
 
 router.get("/", getProducts);
@@ -17,5 +18,6 @@ router.get("/category/", getCategory);
 router.post("/addcategory/", addCategory);
 router.post("/update", updateProduct);
 router.delete("/delete", deleteProduct);
+router.delete("/deletecategory", deletecategory);
 router.get("/:id", getProductsByID);
 module.exports = router;
